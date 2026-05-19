@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class="mb-2">{{ album.title }}</h1>
+<h4 class="text-white-50 mb-4">{{ album.artist }}</h4>
+<p><strong>Информация:</strong> {{ album.info }}</p>
+<p><strong>Жанр:</strong> {{ album.genre }}</p>
+{% for track in tracks %}
+<div class="glass-card mb-3 p-3">
+    <div class="row align-items-center">
+        <div class="col-md-4">
+            <strong>{{ forloop.counter }}. {{ track.title }}</strong>
+        </div>
+        
+        <div class="col-md-5">
+            <audio controls style="height: 35px; width: 100%;">
+                <source src="{{ track.audio.url }}" type="audio/mpeg">
+            </audio>
+        </div>
+        
+        <div class="col-md-3 text-end">
+            {% if track.id in user_track_ids %}
+            <form method="post" action="{% url 'music:remove_from_library' track.id %}" style="display: inline;">
+                {% csrf_token %}
+                <button type="submit" class="btn-danger-glass btn-sm-glass">
+                    <i class="fas fa-trash"></i> Убрать
+                </button>
+            </form>
+            {% else %}
+            <form method="post" action="{% url 'music:add_to_library' track.id %}" style="display: inline;">
+                {% csrf_token %}
+                <button type="submit" class="btn-library btn-sm-glass">
+                    <i class="fas fa-plus"></i> В библиотеку
+                </button>
+            </form>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+<a href="{% url 'music:album_list' %}" class="btn-outline-glass mt-3">Назад</a>
+{% endblock %}

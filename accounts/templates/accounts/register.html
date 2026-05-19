@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row justify-content-center mt-5">
+    <div class="col-md-5">
+        <div class="glass-card p-4">
+            <h2 class="text-center mb-4">Регистрация</h2>
+            
+            <form method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <input type="text" name="username" class="form-control" placeholder="Имя пользователя" required style="background: rgba(255,255,255,0.1); border: none; color: white;">
+                </div>
+                <div class="mb-3">
+                    <input type="email" name="email" class="form-control" placeholder="Email" style="background: rgba(255,255,255,0.1); border: none; color: white;">
+                </div>
+                <div class="mb-3">
+                    <input type="password" name="password" class="form-control" placeholder="Пароль (мин. 6 символов)" required style="background: rgba(255,255,255,0.1); border: none; color: white;">
+                </div>
+                <div class="mb-4">
+                    <input type="password" name="password2" class="form-control" placeholder="Подтвердите пароль" required style="background: rgba(255,255,255,0.1); border: none; color: white;">
+                </div>
+                <button type="submit" class="btn-glass w-100">Зарегистрироваться</button>
+            </form>
+            
+            <div class="text-center mt-4">
+                <p class="text-white-50">Уже есть аккаунт? <a href="{% url 'accounts:login' %}" style="color: #a8b2ff;">Войти</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

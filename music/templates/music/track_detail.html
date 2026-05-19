@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="glass-card p-4 text-center">
+    <h2>{{ track.title }}</h2>
+    <h4>{{ track.album.artist }}</h4>
+    
+    <audio controls src="{{ track.audio.url }}" class="w-100 my-4"></audio>
+    
+    <form method="post" action="{% url 'music:add_to_library' track.id %}">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-gradient">В библиотеку</button>
+    </form>
+    
+    <a href="{% url 'music:album_detail' track.album.id %}" class="btn btn-outline-glass mt-3">Назад</a>
+</div>
+{% endblock %}

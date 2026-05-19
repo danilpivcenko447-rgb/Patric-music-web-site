@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class="text-center mb-4">Моя библиотека</h1>
+
+{% if user_tracks %}
+    {% for item in user_tracks %}
+    <div class="glass-card mb-3 p-3">
+        <div class="row align-items-center">
+            <div class="col-md-4">
+                <strong>{{ item.track.title }}</strong>
+                <br>
+                <small class="text-white-50">{{ item.track.album.artist }}</small>
+            </div>
+            
+            <div class="col-md-5">
+                <audio controls style="height: 35px; width: 100%;">
+                    <source src="{{ item.track.audio.url }}" type="audio/mpeg">
+                </audio>
+            </div>
+            
+            <div class="col-md-3 text-end">
+                <form method="post" action="{% url 'music:remove_from_library' item.track.id %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn-danger-glass btn-sm-glass">
+                        <i class="fas fa-trash"></i> Убрать
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+{% else %}
+    <div class="glass-card p-4 text-center">
+        <p class="text-white-50">У вас пока нет треков</p>
+        <a href="{% url 'music:album_list' %}" class="btn-glass">Найти музыку</a>
+    </div>
+{% endif %}
+{% endblock %}

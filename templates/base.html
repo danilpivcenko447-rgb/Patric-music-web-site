@@ -1,0 +1,87 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PATRIC</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-glass fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="{% url 'music:album_list' %}">
+            <i class="fas fa-headphones me-2"></i>PATRIC
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'music:search_tracks' %}">
+                        <i class="fas fa-search"></i> Поиск
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'music:album_list' %}">
+                        <i class="fas fa-music"></i> Альбомы
+                    </a>
+                </li>
+                </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'music:random_track' %}">
+                            <i class="fas fa-random"></i> Случайный трек
+                        </a>
+                    </li>
+                {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'music:my_library' %}">
+                            <i class="fas fa-bookmark"></i> Моя библиотека
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'accounts:profile' %}">
+                            <i class="fas fa-user"></i> {{ user.username }}
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <form method="post" action="{% url 'accounts:logout' %}" style="display: inline;">
+                            {% csrf_token %}
+                        </form>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'accounts:login' %}">
+                            <i class="fas fa-sign-in-alt"></i> Вход
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'accounts:register' %}">
+                            <i class="fas fa-user-plus"></i> Регистрация
+                        </a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<main class="container my-4 pt-5">
+    {% block content %}
+    {% endblock %}
+</main>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var audios = document.querySelectorAll('audio');
+        audios.forEach(function(audio) {
+            audio.volume = 0.25;
+        });
+    });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

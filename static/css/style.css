@@ -1,0 +1,93 @@
+body {
+    background: linear-gradient(135deg, #0a0a0a, #1a1a1a, #0d1117);
+    font-family: 'Segoe UI', sans-serif;
+    min-height: 100vh;
+    color: #fff;
+}
+
+.glass-card, .navbar-glass, .btn-outline-glass, .btn-library, .btn-danger-glass {
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: 0.3s;
+}
+
+.glass-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 24px;
+}
+.glass-card:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.navbar-glass {
+    background: rgba(0, 0, 0, 0.6) !important;
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.navbar-brand {
+    font-size: 1.6rem;
+    font-weight: 700;
+    background: rgb(255, 255, 255);
+    background-clip: text;
+    color: transparent !important;
+}
+.nav-link {
+    color: rgba(255, 255, 255, 0.8) !important;
+    transition: 0.3s;
+}
+.nav-link:hover {
+    color: #fff !important;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.btn-glass, .btn-outline-glass, .btn-library, .btn-danger-glass {
+    border-radius: 50px;
+    font-weight: 600;
+    background: #1a1a1a;
+    border: none;
+    color: white;
+    transition: 0.1s ease;
+    text-decoration: none;
+}
+.btn-glass:hover, .btn-outline-glass:hover, .btn-library:hover, .btn-danger-glass:hover {
+    background: #2a2a2a;
+    text-decoration: none;
+}
+.btn-glass:active, .btn-outline-glass:active {
+    background: #0a0a0a;
+    transform: scale(0.98);
+}
+.btn-library:active {
+    background: #1e3a1e;
+    color: #a0f0a0;
+    transform: scale(0.98);
+}
+.btn-danger-glass:active {
+    background: #4a1515;
+    color: #ffaaaa;
+    transform: scale(0.98);
+}
+
+.btn-glass { padding: 8px 20px; }
+.btn-outline-glass { padding: 8px 20px; }
+.btn-library, .btn-danger-glass { padding: 6px 16px; }
+.btn-sm-glass { padding: 4px 12px; font-size: 0.85rem; }
+
+h1, h2, h3, h4 {
+    background: linear-gradient(135deg, #fff, #a8b2ff);
+    background-clip: text;
+    color: transparent;
+    font-weight: 700;
+}
+audio {
+    width: 100%;
+    border-radius: 50px;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.fade-in {
+    animation: fadeIn 0.6s ease-out;
+}
