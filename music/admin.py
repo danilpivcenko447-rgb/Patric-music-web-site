@@ -3,13 +3,13 @@ from .models import Album, Track
 
 class TrackInline(admin.TabularInline):
     model = Track
-    extra = 3
+    extra = 1
     fields = ['title', 'audio']
 
 
 @admin.register(Album)
 class AlbumAdmin(admin.ModelAdmin):
-    list_display = ['title', 'artist', 'year']
+    list_display = ['title', 'artist', 'year', 'info']
     inlines = [TrackInline]
 
 
@@ -17,7 +17,3 @@ class AlbumAdmin(admin.ModelAdmin):
 class TrackAdmin(admin.ModelAdmin):
     list_display = ['title', 'album']
     fields = ['title', 'album', 'audio']
-
-class AlbumAdmin(admin.ModelAdmin):
-    list_display = ['title', 'artist', 'year']
-    fields = ['title', 'artist', 'year', 'info']

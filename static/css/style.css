@@ -2,10 +2,9 @@ body {
     background: linear-gradient(135deg, #0a0a0a, #1a1a1a, #0d1117);
     font-family: 'Segoe UI', sans-serif;
     min-height: 100vh;
-    color: #fff;
-}
+    color: #fff;}
 
-.glass-card, .navbar-glass, .btn-outline-glass, .btn-library, .btn-danger-glass {
+.glass-card, .navbar-glass {
     backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.1);
     transition: 0.3s;
@@ -52,7 +51,6 @@ body {
 }
 .btn-glass:hover, .btn-outline-glass:hover, .btn-library:hover, .btn-danger-glass:hover {
     background: #2a2a2a;
-    text-decoration: none;
 }
 .btn-glass:active, .btn-outline-glass:active {
     background: #0a0a0a;
@@ -69,10 +67,14 @@ body {
     transform: scale(0.98);
 }
 
-.btn-glass { padding: 8px 20px; }
-.btn-outline-glass { padding: 8px 20px; }
-.btn-library, .btn-danger-glass { padding: 6px 16px; }
-.btn-sm-glass { padding: 4px 12px; font-size: 0.85rem; }
+.btn-glass, .btn-outline-glass {
+     padding: 8px 20px; 
+}
+.btn-library, .btn-danger-glass { 
+    padding: 6px 16px; 
+}
+.btn-sm-glass { 
+    padding: 4px 12px; font-size: 0.85rem; }
 
 h1, h2, h3, h4 {
     background: linear-gradient(135deg, #fff, #a8b2ff);

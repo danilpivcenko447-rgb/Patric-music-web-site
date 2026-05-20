@@ -7,11 +7,6 @@
     <input type="text" name="q" class="form-control w-50 me-2" placeholder="Название трека или исполнитель" value="{{ query }}">
     <button type="submit" class="btn-glass">Искать</button>
 </form>
-
-{% if query %}
-    <p class="text-center"></p>
-{% endif %}
-
 <div class="row">
     {% for track in tracks %}
     <div class="col-md-6 mb-3">

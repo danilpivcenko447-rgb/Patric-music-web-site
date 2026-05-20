@@ -10,10 +10,6 @@ class Album(models.Model):
     def __str__(self):
         return f"{self.artist} - {self.title}"
 
-    class Meta:
-        ordering = ['-year']
-
-
 class Track(models.Model):
     title = models.CharField(max_length=200)
     audio = models.FileField(upload_to='tracks/')
@@ -26,7 +22,6 @@ class Track(models.Model):
 class UserLibrary(models.Model):
     user = models.ForeignKey('auth.User', on_delete=models.CASCADE)
     track = models.ForeignKey(Track, on_delete=models.CASCADE)
-    added_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         unique_together = ['user', 'track']
