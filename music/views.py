@@ -39,8 +39,8 @@ def random_track(request):
         return render(request, 'music/random_track.html', {'error': 'Нет треков'})
     track = random.choice(tracks)
     return render(request, 'music/random_track.html', {'track': track})
-def search_tracks(request):
 
+def search_tracks(request):
     query = request.GET.get('q', '')
     tracks = []
     if query:
