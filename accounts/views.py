@@ -11,7 +11,7 @@ def register(request):
         
         if password == password2 and len(password) >= 6:
             User.objects.create_user(username=username, password=password)
-            return redirect('accounts:login')
+            return redirect('accounts:profile')
     
     return render(request, 'accounts/register.html')
 @login_required
