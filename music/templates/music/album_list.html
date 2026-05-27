@@ -5,15 +5,11 @@
 <div class="row">
     {% for album in albums %}
     <div class="col-md-4 mb-3">
-        <div class="glass-card p-3 text-center">
-            {% if album.cover_url %}
-                <img src="{{ album.cover_url }}" width="100" height="100" style="object-fit: cover; border-radius: 10%;">
-            {% else %}
-                <i class="fas fa-album fa-3x mb-2 text-white-50"></i>
-            {% endif %}
+        <div class="card text-center">
+            <i class="fas fa-album fa-3x text-white-50"></i>
             <h5 class="mt-2">{{ album.title }}</h5>
             <p class="text-white-50">{{ album.artist }}</p>
-            <a href="{% url 'music:album_detail' album.id %}" class="btn-glass btn-sm-glass">Слушать</a>
+            <a href="{% url 'music:album_detail' album.id %}" class="btn btn-primary btn-sm">Слушать</a>
         </div>
     </div>
     {% endfor %}

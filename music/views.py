@@ -33,18 +33,3 @@ def my_library(request):
         'user_tracks': UserLibrary.objects.filter(user=request.user).select_related('track__album')
     })
 
-def random_track(request):
-    tracks = list(Track.objects.all())
-    if not tracks:
-        return render(request, 'music/random_track.html', {'error': 'Нет треков'})
-    track = random.choice(tracks)
-    return render(request, 'music/random_track.html', {'track': track})
-
-def search_tracks(request):
-    query = request.GET.get('q', '')
-    tracks = []
-    if query:
-        tracks = Track.objects.filter(
-            Q(title__icontains=query) | Q(album__artist__icontains=query)
-        ).select_related('album')
-    return render(request, 'music/search_results.html', {'tracks': tracks, 'query': query})
