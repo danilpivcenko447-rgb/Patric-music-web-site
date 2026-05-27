@@ -2,13 +2,14 @@
 
 {% block content %}
 <h1>{{ album.title }}</h1>
+
 <h4 class="text-white-50 mb-3">{{ album.artist }}</h4>
 
 {% for track in tracks %}
 <div class="card mb-2">
     <div class="row">
         <div class="col-md-4">
-            <strong>{{ forloop.counter }}. {{ track.title }}</strong>
+            <strong>{{ track.title }}</strong>
         </div>
         <div class="col-md-5">
             <audio controls class="w-100">

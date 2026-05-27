@@ -6,7 +6,6 @@
     {% for album in albums %}
     <div class="col-md-4 mb-3">
         <div class="card text-center">
-            <i class="fas fa-album fa-3x text-white-50"></i>
             <h5 class="mt-2">{{ album.title }}</h5>
             <p class="text-white-50">{{ album.artist }}</p>
             <a href="{% url 'music:album_detail' album.id %}" class="btn btn-primary btn-sm">Слушать</a>

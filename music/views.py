@@ -1,8 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from .models import Album, Track, UserLibrary
-import random
-from django.db.models import Q
+
 def album_list(request):
     return render(request, 'music/album_list.html', {'albums': Album.objects.all()})
 

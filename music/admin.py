@@ -10,6 +10,7 @@ class TrackInline(admin.TabularInline):
 @admin.register(Album)
 class AlbumAdmin(admin.ModelAdmin):
     list_display = ['title', 'artist']
+    fields = ['title', 'artist', 'album_img']
     inlines = [TrackInline]
 
 
